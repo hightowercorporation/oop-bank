@@ -1,21 +1,40 @@
 require './bank_account'
+ 	
 describe BankAccount do
+	#instead of defining the account in every test case, define once in the describe
+	let(:account) {BankAccount.new(500,"Sarah")}
+	
 	it "is created with an opening balance and the name of the client" do
-		account = BankAccount.new(500, "Sarah")
+		#account = BankAccount.new(500, "Sarah")
 		expect(account).to be_a(BankAccount)
 	end
 	it "can report it's balance" do
-		account = BankAccount.new(500, "Sarah")
+ 		#account = BankAccount.new(500, "Sarah")
 		expect(account.balance).to eq(500)
 	end
 
-	it "can make deposits"
+	it "can make deposits" do
+ 		#account = BankAccount.new(500, "Sarah")
+		account.deposit(250)
+		expect(account.balance).to eq(750)
+	end
 
-	it "can make withdrawals"
+	it "can make withdrawals" do
+		#account = BankAccount.new(500, "Sarah")
+		account.withdraw(100)
+		expect(account.balance).to eq(400)
+	end
+ 		
+	it "can transfer funds to another bank account" do
+		#account_one = BankAccount.new(500, "Sarah")
+		account_two = BankAccount.new(500, "Beyonce")
+		account.transfer(account_two, 200)
+		expect(account.balance).to eq(300) and expect(account_two.balance).to eq(700)
+	end
 
-	it "can transfer funds to another bank account"
-
-	it "has a minimum opening balance"
+	it "has a minimum opening balance" do
+		
+	end
 
 	it "allows the user to change the minimum balance"
 
