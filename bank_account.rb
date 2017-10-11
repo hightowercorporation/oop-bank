@@ -1,7 +1,11 @@
 class BankAccount
 	attr_reader :balance
-
+	attr_reader :name
+	
 	def initialize(balance, name)
+		if balance < 500 then
+			raise ArgumentError , "Account doesn't meet minimum balance"
+		end
 		@balance = balance
 		@name = name		
 	end
